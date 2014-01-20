@@ -1,0 +1,11 @@
+syntax: glob
+*~
+*.orig
+*.pyc
+*.rej
+*.swp
+tags
+
+syntax: regexp
+
+^tmp/
