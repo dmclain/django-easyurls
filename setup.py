@@ -11,12 +11,24 @@ def _stripsourcecode(s):
     # replace sourcecode blocks with literal blocks
     return re.sub(r'\.\. sourcecode:: \w+', '::', s.strip())
 
+
+import sys
+
+if 'sdist' in sys.argv:
+    import mmf_release_tools
+    version = mmf_release_tools.generate_release_version(easyurls.__version__, __file__)
+    mmf_release_tools.write_release_version(version)
+else:
+    with open("RELEASE-VERSION", "r") as f:
+        version = f.readlines()[0].strip()
+
+
 setup(
     name='django-easyurls',
     description=easyurls.__doc__.strip().splitlines()[0],
     author='Ollie Rutherfurd',
     author_email='oliver@rutherfurd.net',
-    version=easyurls.__version__,
+    version=version,
     license='BSD',
     py_modules=['easyurls'],
     classifiers=[

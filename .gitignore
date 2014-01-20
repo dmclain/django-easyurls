@@ -5,6 +5,9 @@ syntax: glob
 *.rej
 *.swp
 tags
+RELEASE-VERSION
+MANIFEST
+dist/
 
 syntax: regexp
 
